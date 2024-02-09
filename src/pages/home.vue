@@ -35,8 +35,8 @@
         <div class="w-50">
           <h2 class="pl-5">Разделы:</h2>
           <div class="pageHome__section">
-            <a
-              :href="`/questions/?type=${section}`"
+            <router-link
+              :to="`/questions/?type=${section}`"
               v-for="(section, index) in sections"
               :v-key="index"
             >
@@ -48,7 +48,7 @@
               >
                 {{ section }}</v-btn
               >
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
