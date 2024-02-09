@@ -1,0 +1,1 @@
+import{_ as t,o,b as s,F as n,d as e}from"./index.js";const a={},c=e("h2",null,"Как работает условный рендеринг элементов",-1),r=e("p",null," Для условной отрисовки можно использовать любые условные операторы, в том числе и тернарные: ",-1);function _(l,p,d,u,f,i){return o(),s(n,null,[c,r],64)}const h=t(a,[["render",_]]);export{h as default};

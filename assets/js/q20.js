@@ -1,0 +1,1 @@
+import{_ as o,o as t,b as r,F as c,d as e}from"./index.js";const n={},s=e("h2",null,"Что делает ключевое слово currentcolor",-1),a=e("p",null," Ключевое слово currentcolor в CSS используется для установки значения свойства равным текущему цвету текста элемента. ",-1);function _(l,p,u,d,f,i){return t(),r(c,null,[s,a],64)}const h=o(n,[["render",_]]);export{h as default};
