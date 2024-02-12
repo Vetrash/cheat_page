@@ -14,7 +14,7 @@ const routes = [
     ],
   },
   {
-    path: "/questions/:type?",
+    path: "/questions:type?",
     name: "question",
     component: () => import(`@/layouts/ViewQuestions.vue`),
     props: (route) => ({ typeList: route.query.type }),

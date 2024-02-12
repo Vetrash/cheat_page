@@ -36,7 +36,7 @@
           <h2 class="pl-5">Разделы:</h2>
           <div class="pageHome__section">
             <router-link
-              :to="`/questions/?type=${section}`"
+              :to="`/questions?type=${section}`"
               v-for="(section, index) in sections"
               :v-key="index"
             >
