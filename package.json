@@ -5,7 +5,9 @@
     "buildListPages": "node ./src/helpers/createListData.js",
     "dev": "yarn run buildListPages && cross-env NODE_OPTIONS='--no-warnings' vite",
     "build": "yarn run buildListPages && vite build",
-    "preview": "yarn run buildListPages && vite preview"
+    "preview": "yarn run buildListPages && vite preview",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@mdi/font": "7.0.96",
@@ -20,6 +22,7 @@
     "@vitejs/plugin-vue": "^4.5.0",
     "cross-env": "^7.0.3",
     "fs": "^0.0.1-security",
+    "gh-pages": "^6.1.1",
     "parse5": "^7.1.2",
     "sass": "^1.69.0",
     "unplugin-fonts": "^1.1.0",
