@@ -7,7 +7,7 @@
 ## ❗️ Important Links
 
 
-- 🎮 [DeployApp](https://play.vuetifyjs.com/)
+- 🎮 [DeployApp](https://cheat-page.vercel.app)
 
 
 ## 💿 Install
