@@ -1,24 +1,41 @@
 <template>
   <div class="viewerPage">
     <div class="viewerPage__logo">
-      <a href="/">CHEAT_PAGE</a> <span class="px-2">/</span>
-      <v-select
-        variant="underlined"
-        flat
-        v-model="activeSection"
-        menu-icon="mdi-chevron-down"
+      <div class="viewerPage__logo__row">
+        <a href="/">{{ logoText }}</a> <span class="px-2">/</span>
+        <v-select
+          variant="underlined"
+          flat
+          v-model="activeSection"
+          menu-icon="mdi-chevron-down"
+          color="grey-darken-4"
+          class="custom-select"
+          :items="sections"
+          :menu-props="{ contentClass: 'selectScroll', 'offset-y': true }"
+        />
+      </div>
+      <v-btn
+        class="menu_btn"
+        @click="openBurgerMenu"
         color="grey-darken-4"
-        class="custom-select"
-        :items="sections"
-        :menu-props="{ contentClass: 'selectScroll', 'offset-y': true }"
-      />
+        variant="text"
+        rounded="xs"
+      >
+        <img class="menu_btn__icon" src="../images\burger.svg" alt="menu"
+      /></v-btn>
     </div>
 
     <div class="viewerPage__container">
-      <div class="sidebar customScroll">
+      <div
+        class="sidebar customScroll"
+        :class="{ sidebar__hidden: !showBurgerMenu }"
+      >
         <ul class="listQuestion pr-2">
           <li v-for="item in questions" :v-key="item.id">
-            <button class="listQuestion__question" @click="id = item.id">
+            <button
+              class="listQuestion__question"
+              @click="selectQuestion(item.id)"
+            >
               {{ item.title }}
             </button>
           </li>
@@ -55,11 +72,14 @@ export default {
     questions: [],
     sections: [],
     activeSection: null,
+    showBurgerMenu: false,
+    logoText: "CHEAT_PAGE",
   }),
   created() {
     this.activeSection = this.typeList;
     this.questions = getListPage(this.activeSection);
     this.sections = getSections();
+    window.addEventListener("resize", this.resize);
   },
   watch: {
     activeSection(newSection) {
@@ -67,10 +87,48 @@ export default {
       this.id = 1;
     },
   },
+  methods: {
+    resize() {
+      const width = window.innerWidth;
+      if (width <= 700) {
+        this.logoText = "CP";
+      } else {
+        this.logoText = "CHEAT_PAGE";
+      }
+    },
+    openBurgerMenu() {
+      const width = window.innerWidth;
+      if (width <= 700) {
+        this.showBurgerMenu = !this.showBurgerMenu;
+      } else {
+        this.showBurgerMenu = false;
+      }
+    },
+    selectQuestion(id) {
+      console.log("id", id);
+      this.openBurgerMenu();
+      this.id = id;
+    },
+  },
 };
 </script>
 
 <style lang="scss">
+.menu_btn {
+  padding: 5px !important;
+  width: 50px !important;
+  height: 50px !important;
+  display: none !important;
+  .menu_btn__icon {
+    height: 40px;
+    object-fit: contain;
+  }
+
+  @media screen and (width < 700px) {
+    display: block !important;
+  }
+}
+
 .viewerPage {
   width: 100vw;
   height: 100vh;
@@ -88,6 +146,12 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
+    .viewerPage__logo__row {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
     a {
       color: white;
     }
@@ -119,10 +183,25 @@ export default {
     height: 100%;
     overflow: hidden;
 
+    @media screen and (width < 700px) {
+      display: block;
+    }
+
     .sidebar {
       width: 300px;
       height: 100%;
       overflow: auto;
+      transition: 1s;
+      @media screen and (width < 700px) {
+        width: 100%;
+      }
+    }
+    .sidebar__hidden {
+      @media screen and (width < 700px) {
+        height: 0px;
+        overflow: hidden;
+        opacity: 0;
+      }
     }
 
     .content {
