@@ -4,7 +4,7 @@
     <div class="pageHome__content customScroll">
       <h1 class="pl-5">Привет!</h1>
       <div class="pageHome__contentRow">
-        <div class="w-50">
+        <div>
           <p class="pt-5">Это шпаргалка для собеседований!</p>
           <p>
             Здесь собраны ключевые моменты, которые надо знать, но которые могут
@@ -32,7 +32,7 @@
           </p>
         </div>
         <div class="line" />
-        <div class="w-50">
+        <div>
           <h2 class="pl-5">Разделы:</h2>
           <div class="pageHome__section">
             <router-link
@@ -83,12 +83,24 @@ export default {
       padding: 5px 0px;
       text-align: justify;
     }
+    @media screen and (width<700px) {
+      padding: 10px;
+    }
   }
 
   .pageHome__contentRow {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    > div {
+      width: 50%;
+    }
+    @media screen and (width<700px) {
+      display: block;
+      > div {
+        width: 100%;
+      }
+    }
 
     .line {
       width: 2px;
@@ -112,6 +124,7 @@ export default {
       color: gray;
       min-width: 30%;
       display: block;
+      width: 100px;
     }
   }
 

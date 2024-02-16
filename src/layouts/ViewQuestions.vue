@@ -210,6 +210,9 @@ export default {
       height: 100%;
       width: 100%;
       overflow: auto;
+      @media screen and (width < 700px) {
+        padding: 20px;
+      }
       h2 {
         padding: 00px 0px 30px 20px;
       }
